@@ -1,8 +1,6 @@
 import { cookies } from "next/headers";
 import { createHmac, randomBytes, scryptSync, timingSafeEqual } from "crypto";
-import { db } from "@/db";
-import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { findLocalUserById } from "@/lib/local-auth-store";
 
 const SESSION_COOKIE = "femcare_session";
 const SECRET = process.env.SESSION_SECRET || "femcare-dev-secret-change-me";
@@ -66,8 +64,7 @@ export async function getSessionUserId(): Promise<number | null> {
 export async function getCurrentUser() {
   const id = await getSessionUserId();
   if (!id) return null;
-  const rows = await db.select().from(users).where(eq(users.id, id)).limit(1);
-  return rows[0] ?? null;
+  return await findLocalUserById(id);
 }
 
 export async function requireUserId(): Promise<number> {

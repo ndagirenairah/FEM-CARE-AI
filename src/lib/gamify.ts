@@ -1,8 +1,13 @@
-import { db } from "@/db";
-import { users } from "@/db/schema";
-import { eq, sql } from "drizzle-orm";
-
 export async function awardPoints(userId: number, points: number) {
+  if (!process.env.DATABASE_URL) return;
+
+  const [{ db }, { users }, drizzleOrm] = await Promise.all([
+    import("@/db"),
+    import("@/db/schema"),
+    import("drizzle-orm"),
+  ]);
+  const { eq, sql } = drizzleOrm;
+
   const today = new Date().toISOString().slice(0, 10);
   const rows = await db.select().from(users).where(eq(users.id, userId)).limit(1);
   const user = rows[0];

@@ -28,6 +28,16 @@ Our mission is to improve health awareness, encourage preventive care, and empow
 >
 > FEM-CARE-AI is intended for educational and wellness support purposes only. The platform does **not** diagnose, treat, or replace licensed healthcare professionals. Users should always consult qualified medical practitioners for diagnosis and treatment.
 
+## Hackathon Submission Write-up
+
+FemCare AI is a full-stack women's health platform that combines cycle tracking, symptom pattern awareness, wellness logging, health education, appointments, records, and an educational chat experience in one accessible web app. It addresses the real-world problem of fragmented reproductive-health support by helping users organize personal health information, recognize potentially concerning patterns, and prepare for informed conversations with qualified clinicians. Its deterministic assessment and symptom-checking logic includes emergency red-flag guidance while clearly avoiding diagnosis or treatment claims. The project uses Next.js, React, TypeScript, Tailwind CSS, Drizzle ORM, PostgreSQL support, secure password hashing, signed sessions, and a local demo mode. AI-assisted development was used responsibly, with implementation, testing, licensing, and safety responsibility retained by the project author.
+
+**Repository:** https://github.com/ndagirenairah/FEM-CARE-AI
+
+**Demo video:** Not provided yet. If added, share a Google Drive link with access set to “Anyone with the link”.
+
+**Live demo:** Not deployed yet. The project can be run locally with `npm install` followed by `npm run dev`.
+
 ---
 
 # 🎯 Vision
@@ -243,47 +253,45 @@ Interactive charts help users visualize long-term health trends.
 
 ---
 
-# 🛠 Technology Stack
+# Technology Stack
 
 ## Frontend
 
-- React.js
+- Next.js 16
+- React 19
 - TypeScript
-- Tailwind CSS
-- Vite
+- Tailwind CSS 4
 
 ## Backend
 
-- Django
-- Django REST Framework
+- Next.js Route Handlers
+- Drizzle ORM
+- Node.js `crypto` for password hashing and signed sessions
 
 ## Database
 
-- PostgreSQL
-- Drizzle ORM
+- PostgreSQL via `pg` and Drizzle ORM when `DATABASE_URL` is configured
+- Local JSON auth fallback for demos and development without a database
 
 ## Artificial Intelligence
 
-- OpenAI API
-- Python
-- Scikit-learn
-- TensorFlow *(Future)*
+- Deterministic, explainable rule-based assessment and symptom checker
+- AI-ready module boundary in `src/lib/ai.ts`
+- No external AI API or model is required to run the current demo
 
 ## Authentication
 
-- JWT Authentication
-- OAuth 2.0
+- Signed HTTP-only session cookie
+- Scrypt password hashing
+- Local development authentication fallback
 
 ## Deployment
 
-- Vercel
-- Railway
-- Render
-- Docker
+- Any Node.js host that supports Next.js
 
 ---
 
-# 🗄 Database Design
+# Database Design
 
 Core database entities include:
 
@@ -305,35 +313,27 @@ Core database entities include:
 
 ---
 
-# 🔐 Security & Privacy
+# Security & Privacy
 
-FEM-CARE-AI prioritizes user privacy through:
+The current implementation prioritizes privacy through:
 
 - Secure Authentication
 - Password Encryption
-- JWT Authorization
-- Protected API Endpoints
+- Signed session authorization
+- Protected API endpoints
 - Data Validation
 - Secure Database Storage
 - Privacy-Focused Design
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```
-FEM-CARE-AI/
-
-├── frontend/
-├── backend/
-├── database/
-├── ai/
-├── docs/
-├── assets/
-├── screenshots/
-├── public/
-├── README.md
-└── LICENSE
+src/app/          Next.js pages and API route handlers
+src/components/   Shared client UI
+src/db/           Drizzle schema and database connection
+src/lib/          Auth, health logic, content, and AI assessment code
 ```
 
 ---
@@ -364,11 +364,20 @@ Run the development server
 npm run dev
 ```
 
-Start the backend server
+The current demo uses local authentication when `DATABASE_URL` is not configured. Configure `DATABASE_URL` and `SESSION_SECRET` for a deployed database-backed environment.
 
-```bash
-python manage.py runserver
-```
+## Hackathon Compliance
+
+This project addresses the theme **AI & Emerging Technology for Real-World Impact** by using automated health education, cycle tracking, symptom pattern awareness, and wellness guidance to support earlier awareness and informed conversations with clinicians.
+
+- **AI use:** AI-assisted development is disclosed; the current assessment engine is deterministic and does not claim to diagnose or treat.
+- **Safety:** The symptom checker identifies emergency red flags and directs users to emergency care. Every health workflow carries an educational-use disclaimer.
+- **Privacy:** Do not enter real sensitive health information into an untrusted deployment. Production deployments must use a managed database, a strong `SESSION_SECRET`, HTTPS, access controls, retention rules, and a reviewed privacy policy.
+- **Intellectual property:** The submitter is responsible for confirming rights, licenses, and attribution for all code, content, datasets, models, and services used in the submission. Significant pre-existing project components must be disclosed.
+- **Fair competition:** The project does not manipulate votes, judging, submissions, or other participants' infrastructure. Organizers may request a demonstration or source review.
+- **Rules acceptance:** New accounts must accept the complete [hackathon rules](/rules) before registration. Demo accounts use the same acceptance path.
+
+The rules page is an implementation of the supplied hackathon rules. Organizers' official terms and any event-specific deadline or participation requirements take precedence.
 
 ---
 

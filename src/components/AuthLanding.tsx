@@ -16,6 +16,7 @@ export default function AuthLanding() {
   const router = useRouter();
   const [mode, setMode] = useState<"login" | "signup">("signup");
   const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [acceptedRules, setAcceptedRules] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +28,7 @@ export default function AuthLanding() {
       const res = await fetch(`/api/auth/${mode}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, acceptedRules }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -46,7 +47,7 @@ export default function AuthLanding() {
   async function demo() {
     setLoading(true);
     setError("");
-    const creds = { email: `demo${Math.floor(Math.random() * 100000)}@femcare.ai`, password: "demo1234", name: "Demo User" };
+    const creds = { email: `demo${Math.floor(Math.random() * 100000)}@femcare.ai`, password: "demo1234", name: "Demo User", acceptedRules: true };
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -143,6 +144,15 @@ export default function AuthLanding() {
                   required
                 />
               </div>
+
+              {mode === "signup" && (
+                <label className="flex items-start gap-2 text-xs text-slate-500">
+                  <input type="checkbox" checked={acceptedRules} onChange={(e) => setAcceptedRules(e.target.checked)} required className="mt-0.5 accent-pink-600" />
+                  <span>
+                    I agree to the <a href="/rules" className="font-semibold text-pink-700 underline">hackathon rules</a> and understand that FemCare AI is educational, not medical care.
+                  </span>
+                </label>
+              )}
 
               {error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>}
 

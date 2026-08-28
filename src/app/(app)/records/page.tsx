@@ -24,7 +24,9 @@ export default function RecordsPage() {
     setRecords(d.records || []);
   }
   useEffect(() => {
-    load();
+    void (async () => {
+      await load();
+    })();
   }, []);
 
   async function add(e: React.FormEvent) {

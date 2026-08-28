@@ -48,7 +48,9 @@ export default function WellnessPage() {
     }
   }
   useEffect(() => {
-    load();
+    void (async () => {
+      await load();
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

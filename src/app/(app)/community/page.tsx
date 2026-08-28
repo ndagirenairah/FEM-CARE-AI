@@ -17,7 +17,9 @@ export default function CommunityPage() {
     setPosts(d.posts || []);
   }
   useEffect(() => {
-    load(space);
+    void (async () => {
+      await load(space);
+    })();
   }, [space]);
 
   async function post(e: React.FormEvent) {

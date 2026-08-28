@@ -14,7 +14,9 @@ export default function AppointmentsPage() {
     setAppts(d.appointments || []);
   }
   useEffect(() => {
-    load();
+    void (async () => {
+      await load();
+    })();
   }, []);
 
   async function add(e: React.FormEvent) {
@@ -29,7 +31,7 @@ export default function AppointmentsPage() {
     load();
   }
 
-  const now = Date.now();
+  const [now] = useState(() => Date.now());
   const upcoming = appts.filter((a) => new Date(a.apptDate).getTime() >= now).sort((a, b) => +new Date(a.apptDate) - +new Date(b.apptDate));
   const past = appts.filter((a) => new Date(a.apptDate).getTime() < now);
 

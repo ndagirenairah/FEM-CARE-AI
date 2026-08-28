@@ -2,9 +2,9 @@
 
 # 🌸 FEM-CARE-AI
 
-### AI-Powered Women's Reproductive Health & Wellness Platform
+### Women's Reproductive Health & Wellness Platform
 
-Empowering women with intelligent health insights, personalized wellness support, and evidence-based reproductive healthcare through Artificial Intelligence.
+A simple digital health app for tracking cycles, symptoms, appointments, wellness habits, and personal health records.
 
 ![GitHub stars](https://img.shields.io/github/stars/ndagirenairah/FEM-CARE-AI?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/ndagirenairah/FEM-CARE-AI?style=for-the-badge)
@@ -18,199 +18,139 @@ Empowering women with intelligent health insights, personalized wellness support
 
 # 📖 Overview
 
-**FEM-CARE-AI** is an AI-powered digital health platform designed to improve women's reproductive health through intelligent symptom tracking, menstrual health management, preventive healthcare education, personalized wellness recommendations, and AI-assisted health support.
+**FEM-CARE-AI** is a digital health platform designed to help women organize their reproductive health information in one place. It supports cycle tracking, symptom awareness, wellness check-ins, health records, appointment planning, and educational guidance.
 
-The platform supports women throughout every stage of life—from puberty and reproductive years to pregnancy and menopause—by combining Artificial Intelligence, Machine Learning, data analytics, and modern web technologies.
-
-Our mission is to improve health awareness, encourage preventive care, and empower women to make informed health decisions.
+The project was created to make health tracking feel more structured, practical, and easier to understand. It helps women monitor patterns over time and prepare for informed conversations with healthcare professionals.
 
 > **Medical Disclaimer**
 >
-> FEM-CARE-AI is intended for educational and wellness support purposes only. The platform does **not** diagnose, treat, or replace licensed healthcare professionals. Users should always consult qualified medical practitioners for diagnosis and treatment.
+> This platform is intended for educational and wellness support purposes only. It does not diagnose, treat, or replace a qualified medical professional. Always consult a licensed healthcare provider for medical advice, diagnosis, or treatment.
 
-## Hackathon Submission Write-up
+## Project Summary
 
-FemCare AI is a full-stack women's health platform that combines cycle tracking, symptom pattern awareness, wellness logging, health education, appointments, records, and an educational chat experience in one accessible web app. It addresses the real-world problem of fragmented reproductive-health support by helping users organize personal health information, recognize potentially concerning patterns, and prepare for informed conversations with qualified clinicians. Its deterministic assessment and symptom-checking logic includes emergency red-flag guidance while clearly avoiding diagnosis or treatment claims. The project uses Next.js, React, TypeScript, Tailwind CSS, Drizzle ORM, PostgreSQL support, secure password hashing, signed sessions, and a local demo mode. AI-assisted development was used responsibly, with implementation, testing, licensing, and safety responsibility retained by the project author.
+FemCare is a full-stack health platform that brings together period tracking, symptom awareness, wellness logging, health education, records, and appointment planning in a simple and accessible experience. It helps users organize health information, notice patterns, and feel more prepared when speaking with clinicians.
 
 **Repository:** https://github.com/ndagirenairah/FEM-CARE-AI
 
-**Demo video:** Not provided yet. If added, share a Google Drive link with access set to “Anyone with the link”.
-
-**Live demo:** Not deployed yet. The project can be run locally with `npm install` followed by `npm run dev`.
+**Live demo:** The app can be run locally with `npm install` followed by `npm run dev`.
 
 ---
 
-# 🎯 Vision
+# 🎯 Purpose
 
-To become Africa's leading AI-powered women's digital health platform that promotes preventive healthcare, health education, and early awareness of reproductive health conditions.
-
----
-
-# 🎯 Objectives
-
-- Improve reproductive health awareness
-- Encourage preventive healthcare
-- Support healthy lifestyle habits
-- Increase access to reliable health education
-- Promote early recognition of concerning symptoms
-- Deliver personalized AI-powered wellness guidance
-- Help users monitor long-term health trends
+To support women with a more organized and informed approach to personal health, especially around menstrual health, daily wellbeing, and preventive care.
 
 ---
 
-# 🌍 Target Users
+# 🎯 Goals
 
-- Teen Girls
-- University Students
-- Women of Reproductive Age
-- Pregnant Women
+- Improve health awareness
+- Make tracking easier and more consistent
+- Support healthier daily habits
+- Encourage preventive care
+- Help users understand patterns over time
+- Create a simple space for wellness and education
+
+---
+
+# 🌍 Users
+
+- Teen girls
+- University students
+- Women of reproductive age
+- Pregnant women
 - Mothers
-- Women with PCOS
-- Women experiencing Hormonal Imbalances
-- Women with Chronic Reproductive Health Conditions
-- Women approaching Menopause
-- Healthcare Professionals
+- Women managing hormonal health concerns
+- Women approaching menopause
+- Healthcare professionals
 
 ---
 
 # ✨ Key Features
 
-## 👤 User Management
+## 👤 Account & Profile
 
-- User Registration
-- Secure Authentication
-- Profile Management
-- Health Profile
-- Password Recovery
-- Email Verification
-- Role-Based Access Control
+- User registration
+- Secure authentication
+- Health profile management
+- Password protection
+- Session-based access
 
----
+## ❤️ Dashboard
 
-## ❤️ Women's Health Dashboard
-
-- Personalized Dashboard
-- Daily Health Summary
-- AI Recommendations
-- Upcoming Health Reminders
-- Wellness Progress
-- Health Score
-- Personalized Insights
-
----
+- Personal dashboard
+- Daily health summary
+- Wellness progress
+- Upcoming reminders
+- Health score and activity overview
 
 ## 🌸 Menstrual Health
 
-- Period Tracking
-- Ovulation Prediction
-- Fertility Window Tracking
-- PMS Monitoring
-- Flow Tracking
-- Menstrual Pain Tracking
-- Cycle Analytics
-- Menstrual Calendar
+- Period tracking
+- Ovulation prediction
+- Fertility window tracking
+- PMS monitoring
+- Flow tracking
+- Cramp and symptom tracking
+- Cycle insights
 
----
+## 🧬 Wellness Tracking
 
-## 🧬 Hormonal Health
+Monitor patterns related to:
 
-Monitor symptoms including:
-
-- Facial Hair Growth
-- Acne
-- Hair Loss
-- Weight Changes
-- Mood Swings
-- Fatigue
-- Breast Tenderness
-- Sleep Quality
-- Skin Changes
-
----
-
-## 🤖 Artificial Intelligence
-
-### AI Health Assistant
-
-Provides educational guidance on:
-
-- Reproductive Health
-- Hormonal Health
-- Nutrition
-- Pregnancy
-- Menopause
-- Women's Wellness
-
----
-
-### AI Symptom Assessment
-
-Analyzes user-reported symptoms to provide:
-
-- Educational information
-- Personalized wellness guidance
-- Health trend monitoring
-- Recommendations on when to seek professional care
-
----
-
-### AI Health Coach
-
-Supports healthy habits by providing personalized recommendations based on:
-
-- Lifestyle
-- Nutrition
+- Mood
+- Stress
 - Sleep
+- Water intake
 - Exercise
-- Hydration
-- Mental Wellbeing
+- Symptoms
+- Daily reflections
 
----
+## 📅 Health Planning
 
-### AI Health Reports
+- Appointments management
+- Medication reminders
+- Health records and summaries
+- Wellness journaling
+- Daily check-ins
 
-Automatically generates:
+## 📚 Education Center
 
-- Monthly Health Reports
-- Symptom Trends
-- Lifestyle Analytics
-- Wellness Progress Reports
+Access simple educational content on:
+
+- Puberty
+- Menstrual health
+- PCOS
+- Endometriosis
+- Pregnancy
+- Breast health
+- Menopause
+- Healthy lifestyle habits
+
+## 👥 Community
+
+- Anonymous support spaces
+- Health discussions
+- Learning resources
+- Community engagement
 
 ---
 
 # 🏥 Health Modules
 
-- Menstrual Health
-- Hormonal Health
-- Pregnancy Support
-- Fertility Support
-- Menopause Care
-- Breast Health Education
-- Cervical Health Awareness
-- Mental Wellness
+- Menstrual health
+- Hormonal health
+- Pregnancy support
+- Fertility support
+- Menopause care
+- Breast health education
+- Cervical health awareness
+- Mental wellness
 - Nutrition
-- Physical Activity
-- Medication Management
-- Hydration Tracking
-- Sleep Monitoring
-
----
-
-# 📚 Health Education Center
-
-Access evidence-based educational content covering:
-
-- Puberty
-- Menstrual Health
-- Hormonal Disorders
-- PCOS
-- Endometriosis
-- Urinary Tract Infections
-- Pregnancy
-- Breast Health
-- Cervical Health
-- Menopause
-- Healthy Lifestyle Practices
+- Physical activity
+- Medication management
+- Hydration tracking
+- Sleep monitoring
 
 ---
 
@@ -218,38 +158,27 @@ Access evidence-based educational content covering:
 
 Track:
 
-- Menstrual Cycles
+- Menstrual cycles
 - Symptoms
 - Weight
 - Mood
-- Water Intake
+- Water intake
 - Sleep
-- Physical Activity
-- Medication Adherence
-- Wellness Progress
+- Physical activity
+- Medication adherence
+- Wellness progress
 
-Interactive charts help users visualize long-term health trends.
+Simple charts help users understand their health patterns over time.
 
 ---
 
 # 👩‍⚕️ Healthcare Services
 
-- Appointment Scheduling
-- Medical History
-- Health Reports
-- Digital Health Records
-- Hospital Locator *(Future)*
-- Doctor Portal *(Future)*
-
----
-
-# 👥 Community
-
-- Anonymous Community Discussions
-- Women's Health Forums
-- Educational Articles
-- Wellness Challenges
-- Success Stories
+- Appointment booking
+- Health reports
+- Digital medical records
+- Medication tracking
+- Educational support
 
 ---
 
@@ -264,137 +193,106 @@ Interactive charts help users visualize long-term health trends.
 
 ## Backend
 
-- Next.js Route Handlers
+- Next.js route handlers
 - Drizzle ORM
-- Node.js `crypto` for password hashing and signed sessions
-
-## Database
-
-- PostgreSQL via `pg` and Drizzle ORM when `DATABASE_URL` is configured
-- Local JSON auth fallback for demos and development without a database
-
-## Artificial Intelligence
-
-- Deterministic, explainable rule-based assessment and symptom checker
-- AI-ready module boundary in `src/lib/ai.ts`
-- No external AI API or model is required to run the current demo
+- PostgreSQL support
+- Node.js crypto for password hashing and signed sessions
 
 ## Authentication
 
 - Signed HTTP-only session cookie
-- Scrypt password hashing
-- Local development authentication fallback
+- Secure password hashing
+- Local development fallback for demo use
 
 ## Deployment
 
-- Any Node.js host that supports Next.js
+- Any Node.js hosting environment that supports Next.js
 
 ---
 
 # Database Design
 
-Core database entities include:
+Core entities include:
 
 - Users
-- User Profiles
-- Menstrual Cycles
-- Symptoms
-- Mood Logs
-- Health Assessments
+- User profiles
+- Menstrual cycles
+- Mood logs
+- Health assessments
 - Medications
 - Appointments
-- Health Records
-- AI Recommendations
-- Educational Articles
-- Community Posts
-- Notifications
-- Chat Messages
-- Wellness Points
+- Health records
+- Educational articles
+- Community posts
+- Wellness points
 
 ---
 
 # Security & Privacy
 
-The current implementation prioritizes privacy through:
+The current implementation focuses on privacy and safe handling of personal health information through:
 
-- Secure Authentication
-- Password Encryption
+- Secure authentication
+- Password encryption
 - Signed session authorization
-- Protected API endpoints
-- Data Validation
-- Secure Database Storage
-- Privacy-Focused Design
+- Protected API routes
+- Validation of user input
+- Private-by-default design
 
 ---
 
 # Project Structure
 
-```
-src/app/          Next.js pages and API route handlers
-src/components/   Shared client UI
-src/db/           Drizzle schema and database connection
-src/lib/          Auth, health logic, content, and AI assessment code
+```bash
+src/app/          Next.js pages and API routes
+src/components/   Shared UI components
+src/db/           Database schema and connection
+src/lib/          Auth, health logic, and content helpers
 ```
 
 ---
 
 # 🚀 Installation
 
-Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/ndagirenairah/FEM-CARE-AI.git
 ```
 
-Navigate into the project
+Navigate into the folder:
 
 ```bash
 cd FEM-CARE-AI
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Run the development server
+Run the app locally:
 
 ```bash
 npm run dev
 ```
 
-The current demo uses local authentication when `DATABASE_URL` is not configured. Configure `DATABASE_URL` and `SESSION_SECRET` for a deployed database-backed environment.
-
-## Hackathon Compliance
-
-This project addresses the theme **AI & Emerging Technology for Real-World Impact** by using automated health education, cycle tracking, symptom pattern awareness, and wellness guidance to support earlier awareness and informed conversations with clinicians.
-
-- **AI use:** AI-assisted development is disclosed; the current assessment engine is deterministic and does not claim to diagnose or treat.
-- **Safety:** The symptom checker identifies emergency red flags and directs users to emergency care. Every health workflow carries an educational-use disclaimer.
-- **Privacy:** Do not enter real sensitive health information into an untrusted deployment. Production deployments must use a managed database, a strong `SESSION_SECRET`, HTTPS, access controls, retention rules, and a reviewed privacy policy.
-- **Intellectual property:** The submitter is responsible for confirming rights, licenses, and attribution for all code, content, datasets, models, and services used in the submission. Significant pre-existing project components must be disclosed.
-- **Fair competition:** The project does not manipulate votes, judging, submissions, or other participants' infrastructure. Organizers may request a demonstration or source review.
-- **Rules acceptance:** New accounts must accept the complete [hackathon rules](/rules) before registration. Demo accounts use the same acceptance path.
-
-The rules page is an implementation of the supplied hackathon rules. Organizers' official terms and any event-specific deadline or participation requirements take precedence.
+The demo can work with local authentication when `DATABASE_URL` is not configured. For a database-backed deployment, configure `DATABASE_URL` and `SESSION_SECRET`.
 
 ---
 
 # 📅 Roadmap
 
-- AI Health Assistant
-- AI Symptom Assessment
-- AI Hormonal Health Coach
-- AI Nutrition Planner
-- AI Pregnancy Companion
-- AI Menopause Support
-- Doctor Portal
-- Telemedicine Integration
-- Wearable Device Integration
-- Mobile Application
-- Predictive Health Analytics
-- Offline Support
+- Health assistant features
+- Symptom education flow
+- Daily wellness insights
+- Nutrition and lifestyle guidance
+- Pregnancy and menopause support
+- Doctor portal
+- Telemedicine integration
+- Wearable integration
+- Mobile app version
 
 ---
 
@@ -405,10 +303,10 @@ Contributions are welcome.
 To contribute:
 
 1. Fork the repository
-2. Create a new feature branch
-3. Commit your changes
-4. Push to your branch
-5. Submit a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Commit and push
+5. Open a pull request
 
 ---
 
@@ -416,7 +314,7 @@ To contribute:
 
 **Nairah Ndagire**
 
-Software Developer | Artificial Intelligence Enthusiast | Health Technology Innovator
+Software Developer
 
 GitHub:
 https://github.com/ndagirenairah
@@ -431,15 +329,13 @@ This project is licensed under the **MIT License**.
 
 # ⭐ Support the Project
 
-If you find this project valuable, consider giving it a **⭐ Star** on GitHub.
-
-Your support helps promote innovation in women's digital health.
+If you find this project useful, consider giving it a star on GitHub.
 
 ---
 
 <div align="center">
 
-### 🌸 Empowering Women Through Artificial Intelligence & Preventive Healthcare 🌸
+### 🌸 Empowering women through better health awareness and care 🌸
 
 Made with ❤️ by **Nairah Ndagire**
 

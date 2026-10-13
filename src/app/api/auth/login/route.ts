@@ -1,11 +1,15 @@
 import { verifyPassword, createSession } from "@/lib/auth";
 import { findLocalUserByEmail } from "@/lib/local-auth-store";
+import { verifyRecaptcha } from "@/lib/recaptcha";
 
 export async function POST(req: Request) {
   try {
-    const { email, password } = await req.json();
+    const { email, password, recaptchaToken } = await req.json();
     if (!email || !password) {
       return Response.json({ error: "Email and password are required." }, { status: 400 });
+    }
+    if (!(await verifyRecaptcha(recaptchaToken, "login"))) {
+      return Response.json({ error: "Security verification failed. Please try again." }, { status: 403 });
     }
     const normalized = String(email).toLowerCase().trim();
     const user = await findLocalUserByEmail(normalized);

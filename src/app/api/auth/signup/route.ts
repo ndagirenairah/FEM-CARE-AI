@@ -1,14 +1,15 @@
 import { hashPassword, createSession } from "@/lib/auth";
 import { createLocalUser, findLocalUserByEmail } from "@/lib/local-auth-store";
+import { verifyRecaptcha } from "@/lib/recaptcha";
 
 export async function POST(req: Request) {
   try {
-    const { email, password, name, acceptedRules } = await req.json();
+    const { email, password, name, recaptchaToken } = await req.json();
     if (!email || !password || !name) {
       return Response.json({ error: "All fields are required." }, { status: 400 });
     }
-    if (acceptedRules !== true) {
-      return Response.json({ error: "You must accept the hackathon rules to register." }, { status: 400 });
+    if (!(await verifyRecaptcha(recaptchaToken, "signup"))) {
+      return Response.json({ error: "Security verification failed. Please try again." }, { status: 403 });
     }
     if (String(password).length < 6) {
       return Response.json({ error: "Password must be at least 6 characters." }, { status: 400 });

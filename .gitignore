@@ -3,3 +3,4 @@ node_modules/
 *.tsbuildinfo
 tsconfig.tsbuildinfo
 .femcare-local-auth.json
+.vercel

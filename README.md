@@ -280,6 +280,8 @@ npm run dev
 
 The demo can work with local authentication when `DATABASE_URL` is not configured. For a database-backed deployment, configure `DATABASE_URL` and `SESSION_SECRET`.
 
+For production authentication abuse protection, configure Google reCAPTCHA v3 with both `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY`. The server verifies the token, action, and score for every login and signup request. Production requests are rejected when the secret is not configured; local development may omit these keys.
+
 ---
 
 # 📅 Roadmap

@@ -2,6 +2,16 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready(callback: () => void): void;
+      execute(siteKey: string, options: { action: string }): Promise<string>;
+    };
+  }
+}
 
 const FEATURES = [
   { emoji: "🩸", title: "Cycle & Fertility", desc: "Smart period, ovulation & fertility predictions." },
@@ -16,19 +26,33 @@ export default function AuthLanding() {
   const router = useRouter();
   const [mode, setMode] = useState<"login" | "signup">("signup");
   const [form, setForm] = useState({ name: "", email: "", password: "" });
-  const [acceptedRules, setAcceptedRules] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  async function getRecaptchaToken(action: "login" | "signup") {
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!siteKey) return "";
+    if (!window.grecaptcha) throw new Error("Security verification is not ready.");
+    return new Promise<string>((resolve, reject) => {
+      window.grecaptcha?.ready(() => {
+        window.grecaptcha
+          ?.execute(siteKey, { action })
+          .then(resolve)
+          .catch(reject);
+      });
+    });
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setLoading(true);
     try {
+      const recaptchaToken = await getRecaptchaToken(mode);
       const res = await fetch(`/api/auth/${mode}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, acceptedRules }),
+        body: JSON.stringify({ ...form, recaptchaToken }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -47,12 +71,13 @@ export default function AuthLanding() {
   async function demo() {
     setLoading(true);
     setError("");
-    const creds = { email: `demo${Math.floor(Math.random() * 100000)}@femcare.ai`, password: "demo1234", name: "Demo User", acceptedRules: true };
+    const creds = { email: `demo${Math.floor(Math.random() * 100000)}@femcare.ai`, password: "demo1234", name: "Demo User" };
     try {
+      const recaptchaToken = await getRecaptchaToken("signup");
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(creds),
+        body: JSON.stringify({ ...creds, recaptchaToken }),
       });
       if (res.ok) {
         router.push("/dashboard");
@@ -60,13 +85,22 @@ export default function AuthLanding() {
       } else {
         setError("Could not start demo.");
       }
+    } catch {
+      setError("Security verification is not ready. Please try again.");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-fuchsia-100">
+    <>
+      {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
+      )}
+      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-fuchsia-100">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 lg:grid-cols-2 lg:py-20">
         {/* Left: hero */}
         <div className="flex flex-col justify-center">
@@ -145,15 +179,6 @@ export default function AuthLanding() {
                 />
               </div>
 
-              {mode === "signup" && (
-                <label className="flex items-start gap-2 text-xs text-slate-500">
-                  <input type="checkbox" checked={acceptedRules} onChange={(e) => setAcceptedRules(e.target.checked)} required className="mt-0.5 accent-pink-600" />
-                  <span>
-                    I agree to the <a href="/rules" className="font-semibold text-pink-700 underline">hackathon rules</a> and understand that FemCare AI is educational, not medical care.
-                  </span>
-                </label>
-              )}
-
               {error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>}
 
               <button type="submit" disabled={loading} className="btn-primary w-full">
@@ -174,6 +199,7 @@ export default function AuthLanding() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

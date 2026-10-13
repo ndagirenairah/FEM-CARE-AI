@@ -282,6 +282,14 @@ The demo can work with local authentication when `DATABASE_URL` is not configure
 
 For production authentication abuse protection, configure Google reCAPTCHA v3 with both `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY`. The server verifies the token, action, and score for every login and signup request. Production requests are rejected when the secret is not configured; local development may omit these keys.
 
+## Architecture and SOLID principles
+
+- **Single Responsibility:** API routes coordinate HTTP concerns; authentication, reCAPTCHA verification, local persistence, and health logic live in separate modules.
+- **Open/Closed:** Chat responses use the `ChatResponder` interface, so a future provider can be added without changing the chat request flow.
+- **Liskov Substitution:** `RuleBasedChatResponder` implements `ChatResponder` and can be replaced by another compatible responder.
+- **Interface Segregation:** The chatbot depends only on the small `ChatResponder` and authentication function contracts it needs.
+- **Dependency Inversion:** The chat handler receives authentication and response dependencies instead of constructing them internally, making it independently testable.
+
 ---
 
 # 📅 Roadmap

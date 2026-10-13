@@ -1,16 +1,16 @@
-import { chatReply } from "@/lib/ai";
 import { requireUserId } from "@/lib/auth";
+import { createChatHandler, RuleBasedChatResponder } from "@/lib/chat-service";
 
 export const dynamic = "force-dynamic";
 
+const handleChatRequest = createChatHandler({
+  authenticate: requireUserId,
+  responder: new RuleBasedChatResponder(),
+});
+
 export async function POST(req: Request) {
   try {
-    await requireUserId();
-    const { message } = await req.json();
-    if (!message || typeof message !== "string") {
-      return Response.json({ error: "Message required" }, { status: 400 });
-    }
-    return Response.json({ reply: chatReply(message) });
+    return await handleChatRequest(req);
   } catch {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
